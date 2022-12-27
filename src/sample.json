@@ -1,0 +1,17 @@
+[
+  {
+    "BlName": "UN HQ",
+    "city": "NYC",
+    "FoundationYear": "1952"
+  },
+  {
+    "BlName": "Khufu Pyramid",
+    "city": "Cairo",
+    "FoundationYear": " 2570 BC"
+  },
+  {
+    "BlName": "Eiffel Tower",
+    "city": "Paris",
+    "FoundationYear": "1889"
+  }
+]

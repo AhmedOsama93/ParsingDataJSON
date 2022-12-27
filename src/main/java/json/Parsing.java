@@ -44,7 +44,26 @@ public class Parsing {
         }
         return buildings;
     }
+    public JSONArray addBuliding(String fileName, String BlName, String city, String FoundationYear){
+        JSONParser jsonParser = new JSONParser();
+        JSONObject jsonObject = new JSONObject();
+        JSONObject newJsonObject = new JSONObject();
+        try {
+            jsonObject = (JSONObject) jsonParser.parse(new FileReader(fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        JSONArray jsonArray = (JSONArray) jsonObject.get("Buildings");
+        newJsonObject.put("BlName", BlName);
+        newJsonObject.put("city", city);
+        newJsonObject.put("FoundationYear", FoundationYear);
+        jsonArray.add(newJsonObject);
+        jsonObject.put("Buildings",newJsonObject);
+        return jsonArray;
 
+    }
     void printFile(String path) {
         List<Building> buildings = parseFile(path);
         for (Building building : buildings) {

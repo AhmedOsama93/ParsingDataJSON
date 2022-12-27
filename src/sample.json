@@ -1,4 +1,4 @@
-[
+{"Buildings":[
   {
     "BlName": "UN HQ",
     "city": "NYC",
@@ -14,4 +14,4 @@
     "city": "Paris",
     "FoundationYear": "1889"
   }
-]
+]}

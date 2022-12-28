@@ -65,6 +65,7 @@ public class Parsing {
         file.write(String.valueOf(jsonArray));
         file.close();
     }
+
     public void searchByMethod(String method, String value){
         JSONParser jsonParser = new JSONParser();
         JSONArray jsonArray =new JSONArray();
@@ -89,13 +90,57 @@ public class Parsing {
             }
         }
     }
+
+
+    public void deleteByMethod(String method, String value){
+        JSONParser jsonParser = new JSONParser();
+        JSONArray jsonArray =new JSONArray();
+        try {
+            jsonArray = (JSONArray) jsonParser.parse(new FileReader(fileName));
+        } catch (IOException e) {
+            e.printStackTrace();
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+        for (int i=0 ; i<jsonArray.size() ; i++){
+            JSONObject jsonObject = (JSONObject) jsonArray.get(i);
+            if(method.equals("BlName") && value.equals((String)jsonObject.get("BlName"))){
+                jsonArray.remove(jsonObject);
+                i--;
+            }
+            if(method.equals("city") && value.equals((String)jsonObject.get("city"))){
+                jsonArray.remove(jsonObject);
+                i--;
+            }
+            if(method.equals("FoundationYear") && value.equals((String)jsonObject.get("FoundationYear"))){
+                jsonArray.remove(jsonObject);
+                i--;
+            }
+        }
+        FileWriter file = null;
+        try {
+            file = new FileWriter(fileName);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            file.write(String.valueOf(jsonArray));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            file.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        System.out.println("Done ^_^");
+    }
     void printFile(String path) {
         List<Building> buildings = parseFile(path);
         for (Building building : buildings) {
             System.out.println(building.toString());
         }
     }
-
 };
 
 
